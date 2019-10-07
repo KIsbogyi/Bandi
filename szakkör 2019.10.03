@@ -1,0 +1,24 @@
+tarsalgo=[]
+def F1():
+    fbe=open("ajto.txt", 'r')
+    for sor in fbe:
+        sor=sor.strip().split()
+        tarsalgo.append(sor)
+    fbe.close
+
+def F2():
+    for kislista in tarsalgo:
+        if kislista [3]=="be":
+            print("első belépő", kislista[2])
+            break
+    index=0
+    while tarsalgo[index][3]!="be":
+        index+=1
+    print("első belépő", tarsalgo[index][2])
+
+
+    for index in range(len(tarsalgo)-1,-1,-1):
+        
+    
+F1()
+F2()
