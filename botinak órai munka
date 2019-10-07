@@ -1,0 +1,129 @@
+szavak=[]
+
+def adatok():
+    FBI=open("szotar.py.txt", "r")
+    for szo in FBI:
+        szavak.append(szo.rstrip())
+   # print(szavak)
+    FBI.close()
+
+#-----------------------------------------------
+def szsz():
+    hossz=len(szavak)
+    return hossz
+
+#-----------------------------------------------
+def F1():
+    print('1. feladat')
+##    szoveg=input("Aggyá szöveget:")
+    szoveg="alma"
+    halmaz=set()
+    for i in range(len(szoveg)):
+        if szoveg [i]!= " ":
+            halmaz.add (szoveg[i])
+    print(halmaz)
+    print("különböző karakterek száma:", len(halmaz))
+        
+    
+#-----------------------------------------   
+def rendes(szo):
+    lst=[]
+    for i in range(len(szo)):
+        lst.append(szo[i])
+        lst=sorted(lst)
+    rendezett_szo=''
+    for betu in lst:
+        rendezett_szo+=betu
+
+    return rendezett_szo
+
+#-------------------------------------------------
+def F3():
+    fki=open("abc.txt","w")
+    for szo in szavak :
+        rendezett_szo=rendes(szo)
+        fki.write(rendezett_szo+"\n")
+       
+    
+        print(rendezett_szo)
+    fki.close
+#------------------------------------------
+def vizsgálat(s1,s2):
+    return rendes(s1)==rendes(s2)
+
+#-------------------------------------------------
+def F4():
+##    szo1=input("1.szó")
+##    szo2=input("2.szó")
+    szo1="alma"
+    szo2="alma"
+    if len(szo1)==len(szo2):
+       if vizsgálat(szo1,szo2):
+          print("ya!")
+       else:
+            print("Nyet!")
+       
+    else:
+        print("Nem egyforma hosszú, barom")
+
+#----------------------------------------------------
+def F5():
+    szo=input('Kérek egyet')
+    db=0
+    for sz in szavak:
+        if vizsgálat(szo,sz):
+            print(sz)
+            db+=1
+    if db==0:
+       print("nin-csen")
+
+#--------------------------------------------------------
+def F6():
+    lh=0
+    for i in range(1,len(szavak)):
+        if len(szavak[i])>len(szavak[lh]):
+            lh=i
+    print("a leghosszabb szo", szavak[lh],"a hossza", len(szavak[lh]))
+#innentől van
+    for sz in szavak:
+        if vizsgálat(sz,szavak[lh]):
+            print(sz)
+#-------------------------------------------------------------
+def F7():
+    #rendezési algoritmus
+    for i in range(0,len(szavak)-1):
+        for j in range(i+1, len(szavak)):
+            if len(szavak[i])>len(szavak[j]):
+                szavak[i],szavak[j]=szavak[j],szavak[i]
+    print(szavak)
+
+    fki=open('rendezve.txt', 'w+')
+    print(szavak[0],end=' ')
+    for i in range(1, len(szavak)):
+        if len(szavak[i])==len(szavak[i-1]):
+            if vizsgálat (szavak[i],szavak[i-1]):
+                fki.write(szavak[i]+' ')
+            else:
+                fki.write('\n'+szavak[i]+' ')
+        else:
+            fki.write('\n')
+            fki.write('\n'+szavak[i]+' ')
+    fki.close
+            
+#*******************************
+
+#főmodul
+adatok()
+F1()
+F3()
+F4()
+F5()
+F6()
+
+F7()
+
+#print("a szótár szavainak száma:",szsz())
+#print("\nniceuuuuuuuu")
+            #szöveg
+        #len/-lista
+        #   \halmaz 
