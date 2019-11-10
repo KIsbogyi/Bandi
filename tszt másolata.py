@@ -1,4 +1,4 @@
-fbe=open('tele.txt', 'w')
+fbe=open('tele.txt', 'a+')
 while True:
     
     fbe.write('hali')
