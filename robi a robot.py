@@ -53,7 +53,45 @@ def F2():
     print(abs(y),'lépést kell tenni x-tengelyen')
     print(abs(x),'lépést kell tenni y-tengelyen')
     print('a legnagyobb táv a %d. lépésben: %.3f' %(lepes,maxi_tav))
+
+def F3():
+    h=set()
+    h={'EN', 'EK', 'DN', 'DK', 'NE','KE', 'ND','KD'}
+    ind=2
+    for sorsz in range(len(lst)):
+        e=0
+        for i in range(len(lst[sorsz])-1):
+            e+=1
+            if lst[sorsz][i]+lst[sorsz][i+1] in h:
+                e+=2
+        e+=ind
+        if e<=100:
+            print(sorsz+1,' ',e)
+
+def F4():
+    fki=open('ujprog.txt', 'w+')
+    sz=1
+    ujsz=''
+    for prg in lst:
+        for i in range(len(prg)-1):
+            if prg[i]==prg[i+1]:
+                sz+=1
+            else:
+                if sz==1:
+                    ujsz+=prg[i]
+                else:
+                    ujsz+=str(sz)+prg[i]
+                sz=1
+        if sz==1:
+            ujsz+=prg[-1]
+        else:
+            ujsz+=str(sz)+prg[i]
+        print(ujsz)
+        fki.write(ujsz+'\n')
+        ujsz=''
+    fki.close
             
+        
         
         
 
@@ -61,4 +99,5 @@ def F2():
 #g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2g2
 F1()
 F2()
-
+F3()
+F4()
