@@ -1,0 +1,63 @@
+szotar = []
+global szint
+szint =0
+global szamlalo
+szamlalo = 0
+
+def beolvasas():
+    global hossz
+    global szoszam
+    adatok = input('szoszam, hossz:')
+    adatok = adatok.strip().split()
+    szoszam = int(adatok[0])
+    hossz = int(adatok[1])
+    for i in range(szoszam):
+        szo = input()
+        szotar.append(szo)
+
+def sofa(szint,szamlalo):
+    print(szint)
+    if szint == 0:
+        global szotar2
+        szotar2 = list.copy(szotar)
+        for elem in szotar2:
+            szotar.remove(elem)
+            global vege
+            vege = elem[len(elem)-hossz:len(elem)]
+            szotar2.remove(elem)
+            for elem2 in szotar2:
+                eleje2 = elem2[0:hossz]
+                vege2 = elem2[len(elem2)-hossz:len(elem2)]
+                print(vege,eleje2)
+                if vege == eleje2:
+                    szotar2.remove(elem2)
+                    vege = vege2
+                    print('2')
+                    szint += 1
+                    sofa(szint, szamlalo)
+                else:
+                    print('1')
+                    szamlalo += 1
+                    szint= 0
+                    sofa(szint, szamlalo)
+    else:
+        for elem2 in szotar2:
+            eleje2 = elem2[0:hossz]
+            vege2 = elem2[len(elem2) - hossz:len(elem2)]
+            print(vege, eleje2)
+            if vege == eleje2:
+                szotar2.remove(elem2)
+                print('3')
+                vege = vege2
+                szint += 1
+                sofa(szint, szamlalo)
+            else:
+                print('4')
+                print(szotar2)
+                szamlalo += 1
+                szint = 0
+                sofa(szint,szamlalo)
+
+beolvasas()
+sofa(szint,szamlalo) #TODO: a def meghivast ismételni jó-e
+print(szamlalo,szotar2,szotar,szint)
